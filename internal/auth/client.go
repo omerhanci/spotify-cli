@@ -12,7 +12,7 @@ import (
 	"net/http"
 )
 
-const redirectURI = "http://localhost:8080/callback"
+const redirectURI = "http://localhost:9191/callback"
 
 var (
 	ch    = make(chan *spotify.Client)
@@ -80,7 +80,7 @@ func NewAuthClient() *AuthClient {
 		ch <- client
 	})
 	go func() {
-		err := http.ListenAndServe(":8080", nil)
+		err := http.ListenAndServe(":9191", nil)
 		if err != nil {
 			log.Fatal(err)
 		}
