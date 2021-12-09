@@ -19,7 +19,7 @@ func NewPlayerService(client *spotify.Client) *PlayerService {
 func (p PlayerService) Play(songUri spotify.URI, deviceId *spotify.ID, contextUri *spotify.URI) {
 	ctx := context.Background()
 	opts := &spotify.PlayOptions{
-		DeviceID:   deviceId,
+		DeviceID: deviceId,
 	}
 
 	if contextUri != nil {
@@ -41,7 +41,7 @@ func (p PlayerService) Play(songUri spotify.URI, deviceId *spotify.ID, contextUr
 
 }
 
-func (p PlayerService) Queue(trackId spotify.ID, deviceId *spotify.ID) error {
+func (p PlayerService) Queue(trackId spotify.ID, deviceId *spotify.ID) {
 	ctx := context.Background()
 	songUris := make([]spotify.URI, 0)
 	opts := &spotify.PlayOptions{
@@ -54,10 +54,9 @@ func (p PlayerService) Queue(trackId spotify.ID, deviceId *spotify.ID) error {
 	err := p.Client.QueueSongOpt(ctx, trackId, opts)
 
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
 
-	return nil
 }
 
 func (p PlayerService) PlayActiveSong(deviceId *spotify.ID) {
