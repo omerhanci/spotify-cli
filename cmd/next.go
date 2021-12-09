@@ -1,5 +1,5 @@
 /*
-Copyright © 2021 NAME HERE <EMAIL ADDRESS>
+Copyright © 2021 Ömer Hancı <hanciomer@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,13 +24,9 @@ import (
 // nextCmd represents the next command
 var nextCmd = &cobra.Command{
 	Use:   "next",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Skip to next song",
+	Long: `Skip to the next song of the playlist or album.
+			Usage: spotify-cli next`,
 	Run: func(cmd *cobra.Command, args []string) {
 		app := pkg.Init()
 		app.PlayerService.Next()

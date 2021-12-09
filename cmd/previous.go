@@ -1,5 +1,5 @@
 /*
-Copyright © 2021 NAME HERE <EMAIL ADDRESS>
+Copyright © 2021 Ömer Hancı <hanciomer@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,13 +24,8 @@ import (
 // previousCmd represents the previous command
 var previousCmd = &cobra.Command{
 	Use:   "previous",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Play the previous song of the album/playlist",
+	Long:  `Skips to the previous song. Usage: spotify-cli previous`,
 	Run: func(cmd *cobra.Command, args []string) {
 		app := pkg.Init()
 		app.PlayerService.Previous()

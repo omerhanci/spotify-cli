@@ -1,5 +1,5 @@
 /*
-Copyright © 2021 NAME HERE <EMAIL ADDRESS>
+Copyright © 2021 Ömer Hancı <hanciomer@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -44,12 +44,15 @@ e.g: spotify-cli search "comfortably numb"`,
 
 		queueOrPlay, err := prompter.PromptSelect("Queue or play right now?", []string{"play", "queue"}, nil, 2)
 
+		if err != nil {
+			return
+		}
+
 		if queueOrPlay == 0 {
 			app.PlayerService.Play(trackList[selectedTrackIndex].URI, &app.PlayerState.Device.ID, nil)
 		} else {
 			app.PlayerService.Queue(trackList[selectedTrackIndex].ID, &app.PlayerState.Device.ID)
 		}
-
 	},
 }
 

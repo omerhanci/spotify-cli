@@ -3,6 +3,7 @@ module spotify-cli
 go 1.17
 
 require (
+	github.com/google/uuid v1.1.2
 	github.com/manifoldco/promptui v0.9.0
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/viper v1.9.0
@@ -32,5 +33,3 @@ require (
 	gopkg.in/ini.v1 v1.64.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
-
-replace github.com/zmb3/spotify/v2 v2.0.0 => /Users/macbookair/omer/spotify

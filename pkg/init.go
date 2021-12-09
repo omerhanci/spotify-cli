@@ -19,8 +19,6 @@ type Application struct {
 }
 
 func Init() *Application {
-
-
 	authClient := auth.NewAuthClient()
 	App = Application{
 		AuthClient:    authClient,

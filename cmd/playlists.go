@@ -1,5 +1,5 @@
 /*
-Copyright © 2021 NAME HERE <EMAIL ADDRESS>
+Copyright © 2021 Ömer Hancı <hanciomer@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -26,13 +26,8 @@ import (
 // playlistsCmd represents the playlists command
 var playlistsCmd = &cobra.Command{
 	Use:   "playlists",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Command to return playlists of the active users",
+	Long:  `Command to return playlists of the active users. Usage spotify-cli playlists`,
 	Run: func(cmd *cobra.Command, args []string) {
 		app := pkg.Init()
 		userPlaylists := app.PlayerService.GetCurrentUserPlaylists()

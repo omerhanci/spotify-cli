@@ -3,6 +3,7 @@ package auth
 import (
 	"context"
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/spf13/viper"
 	"github.com/zmb3/spotify/v2"
 	spotifyauth "github.com/zmb3/spotify/v2/auth"
@@ -15,7 +16,7 @@ const redirectURI = "http://localhost:8080/callback"
 
 var (
 	ch    = make(chan *spotify.Client)
-	state = "abc123"
+	state = uuid.New().String()
 )
 
 type AuthClient struct {
@@ -69,10 +70,12 @@ func NewAuthClient() *AuthClient {
 			log.Fatalf("State mismatch: %s != %s\n", st, state)
 		}
 		viper.Set("token", token)
-		viper.WriteConfig()
+		err = viper.WriteConfig()
+		if err != nil {
+			log.Fatal(err)
+		}
 		authClient.token = token
 
-		// use the token to get an authenticated client
 		client := GetAuthClient(auth, token, r)
 		ch <- client
 	})
@@ -84,7 +87,6 @@ func NewAuthClient() *AuthClient {
 	}()
 
 	authClient.Client = <-ch
-	authClient.Client.CurrentUser(context.Background())
 	return authClient
 }
 

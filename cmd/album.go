@@ -1,5 +1,5 @@
 /*
-Copyright © 2021 NAME HERE <EMAIL ADDRESS>
+Copyright © 2021 Ömer Hancı <hanciomer@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ e.g: spotify-cli search album "dark side of the moon"`,
 			return
 		}
 
-		app.PlayerService.Play(trackList[selectedTrackIndex].URI,  &app.PlayerState.Device.ID, &albumList[selectedAlbumIndex].URI)
+		app.PlayerService.Play(trackList[selectedTrackIndex].URI, &app.PlayerState.Device.ID, &albumList[selectedAlbumIndex].URI)
 
 	},
 }
